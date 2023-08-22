@@ -1,0 +1,202 @@
+entity {
+  id {
+    kind: EK_JUPITER
+    name: "ju1"
+  }
+  jupiter_attr {
+    jupiter_type: JDT_COLO
+  }
+}
+entity {
+  id {
+    kind: EK_SUPERBLOCK
+    name: "ju1.a1"
+  }
+  superblock_attr {
+    index_within_jupiter: 1
+  }
+}
+entity {
+  id {
+    kind: EK_SPINEBLOCK
+    name: "ju1.s1"
+  }
+}
+entity {
+  id {
+    kind: EK_AGG_BLOCK
+    name: "ju1.a1.m1"
+  }
+}
+entity {
+  id {
+    kind: EK_AGG_BLOCK
+    name: "ju1.a1.m2"
+  }
+}
+entity {
+  id {
+    kind: EK_PACKET_SWITCH
+    name: "ju1.a1.m1.s2c1"
+  }
+  packet_switch_attr {
+    switch_loc {
+      stage: 2
+    }
+  }
+}
+entity {
+  id {
+    kind: EK_PACKET_SWITCH
+    name: "ju1.a1.m1.s2c2"
+  }
+  packet_switch_attr {
+    switch_loc {
+      stage: 2
+    }
+  }
+}
+entity {
+  id {
+    kind: EK_PORT
+    name: "ju1.a1.m1.s2c1.p1"
+  }
+  port_attr {
+    physical_capacity_bps: 1000000000
+  }
+}
+entity {
+  id {
+    kind: EK_PORT
+    name: "ju1.a1.m1.s2c1.p2"
+  }
+  port_attr {
+    physical_capacity_bps: 2000000000
+  }
+}
+entity {
+  id {
+    kind: EK_PORT
+    name: "ju1.a1.m1.s2c1.p3"
+  }
+  port_attr {
+    physical_capacity_bps: 4000000000
+  }
+}
+entity {
+  id {
+    kind: EK_PORT
+    name: "ju1.a1.m1.s2c1.p4"
+  }
+  port_attr {
+    physical_capacity_bps: 1000000000
+  }
+}
+entity {
+  id {
+    kind: EK_PORT
+    name: "ju1.a1.m1.s2c2.p14"
+  }
+  port_attr {
+    physical_capacity_bps: 1000000000
+  }
+}
+relationship {
+  kind: RK_CONTAINS
+  a {
+    kind: EK_JUPITER
+    name: "ju1"
+  }
+  z {
+    kind: EK_SUPERBLOCK
+    name: "ju1.a1"
+  }
+}
+relationship {
+  kind: RK_CONTAINS
+  a {
+    kind: EK_JUPITER
+    name: "ju1"
+  }
+  z {
+    kind: EK_SPINEBLOCK
+    name: "ju1.s1"
+  }
+}
+relationship {
+  kind: RK_CONTAINS
+  a {
+    kind: EK_SUPERBLOCK
+    name: "ju1.a1"
+  }
+  z {
+    kind: EK_AGG_BLOCK
+    name: "ju1.a1.m1"
+  }
+}
+relationship {
+  kind: RK_CONTAINS
+  a {
+    kind: EK_AGG_BLOCK
+    name: "ju1.a1.m1"
+  }
+  z {
+    kind: EK_PACKET_SWITCH
+    name: "ju1.a1.m1.s2c1"
+  }
+}
+relationship {
+  kind: RK_CONTAINS
+  a {
+    kind: EK_AGG_BLOCK
+    name: "ju1.a1.m1"
+  }
+  z {
+    kind: EK_PACKET_SWITCH
+    name: "ju1.a1.m1.s2c2"
+  }
+}
+relationship {
+  kind: RK_CONTAINS
+  a {
+    kind: EK_PACKET_SWITCH
+    name: "ju1.a1.m1.s2c1"
+  }
+  z {
+    kind: EK_PORT
+    name: "ju1.a1.m1.s2c1.p1"
+  }
+}
+relationship {
+  kind: RK_CONTAINS
+  a {
+    kind: EK_PACKET_SWITCH
+    name: "ju1.a1.m1.s2c1"
+  }
+  z {
+    kind: EK_PORT
+    name: "ju1.a1.m1.s2c1.p2"
+  }
+}
+relationship {
+  kind: RK_CONTAINS
+  a {
+    kind: EK_PACKET_SWITCH
+    name: "ju1.a1.m1.s2c1"
+  }
+  z {
+    kind: EK_PORT
+    name: "ju1.a1.m1.s2c1.p3"
+  }
+}
+relationship {
+  kind: RK_CONTAINS
+  a {
+    kind: EK_PACKET_SWITCH
+    name: "ju1.a1.m1.s2c1"
+  }
+  z {
+    kind: EK_PORT
+    name: "ju1.a1.m1.s2c1.p4"
+  }
+}

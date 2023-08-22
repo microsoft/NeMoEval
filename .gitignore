@@ -396,3 +396,82 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.idea/
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# flask logs
+*.log
+instance/
+.webassets-cache
+
+gym/graphs/*.json
+
+# Sqlite3 db
+gymstore.db
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+cleanvenv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Settings
+local.settings.json
+
+# Any logs
+*.log
+eval/our_method/logs/*.jsonl
+eval/sql_baseline/data/*
+eval/google_bard/logs/*
+eval/pandas_baseline/logs/*
+eval/sql_baseline/logs/*
+malt-eval/our_method/logs/*
+malt-eval/pandas_baseline/logs/*
+malt-eval/sql_baseline/logs/*
+malt-eval/google_bard/logs/*
+malt-eval/google_bard/data/*
+error_analysis/malt/*
+error_analysis/segmentation/*
+plot_hotnets/*
+eval/strawman/logs/*
+eval/strawman/graph_data/*
+*.DS_Store
