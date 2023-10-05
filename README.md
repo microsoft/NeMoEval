@@ -55,10 +55,12 @@ In the `app_traffic_analysis/strawman/` and `app_lifecycle_management/strawman/`
 
 Rename .env.template to .env
 
-Set OPENAI_API_KEY to be an openAI API key in the .env file.
+Set OPENAI_API_KEY and OPENAI_API_BASE in the .env file.
 > Make sure that the OPENAI_API_KEY has credits
 
-Note that by default we use [AzureOpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service-b) key, if you want to use non-Azure key, please select the following in `strawman/ai_model.py`
+Note that by default we use [AzureOpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service-b) key, you need to include `OPENAI_API_BASE=https://your-resource-name.openai.azure.com` in your `.env` file.
+
+If you want to use non-Azure key, please select the following in `strawman/ai_model.py`
 ```
 # Without Azure key
 llm = OpenAI(
@@ -79,7 +81,7 @@ llm = OpenAI(
 cd app_traffic_analysis/strawman
 python test_with_golden.py
 ```
-Results are logged in `strawman/logs/`
+Results are logged in `baseline/logs/`
 
 2. To add your own query with golden answer code
 Add your {prompt, answer} pair in the following code. Node that the order of prompt and answers must match.

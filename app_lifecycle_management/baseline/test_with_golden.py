@@ -78,7 +78,7 @@ def userQuery(prompt_list, graph_json, G):
         # Reset ret when it's a new test
         ret = None
 
-        # Run each prompt for 10 times
+        # Run each prompt for EACH_PROMPT_RUN_TIME times
         for i in range(EACH_PROMPT_RUN_TIME):
             if each_prompt not in allAnswer.keys():
                 # terminate the code with error message

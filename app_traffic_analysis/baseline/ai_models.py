@@ -45,7 +45,6 @@ llm = AzureChatOpenAI(
 #     )
 
 
-# For GPT-4
 prefix = """
 Generate the answer of graph processing queries. 
 User will specify the output type. The return_object will be a JSON object with two keys, 'type' and 'data'. 

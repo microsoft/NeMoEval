@@ -59,7 +59,7 @@ def userQuery(prompt_list, graph_json):
         # Reset ret when it's a new test
         ret = None
 
-        # Run each prompt for 10 times
+        # Run each prompt for EACH_PROMPT_RUN_TIME times
         for i in range(EACH_PROMPT_RUN_TIME):
             if each_prompt not in allAnswer.keys():
                 # terminate the code with error message
@@ -81,7 +81,7 @@ def userQuery(prompt_list, graph_json):
             llm_output_token_count = count_tokens(pyGraphNetExplorer, answer)
             print("model returned")
 
-            if answer.startswith("Answer:\n'''"):  # For GPT-4
+            if answer.startswith("Answer:\n'''"):
                 llm_answer = answer[12:-4]
                 print("llm_answer: ", llm_answer)
             else:
