@@ -41,6 +41,14 @@ def getGraphData():
 
     return rawData
 
+def node_attributes_are_equal(node1_attrs, node2_attrs):
+    # Check if "size", "color", and "labels" are equal for two nodes
+    return (
+        node1_attrs["size"] == node2_attrs["size"] and
+        node1_attrs["color"] == node2_attrs["color"] and
+        node1_attrs["labels"] == node2_attrs["labels"]
+    )
+
 def userQuery(prompt_list, graph_json):
     # Load the existing prompt and golden answers from Json
     golden_answer_filename = '../data/prompt_golden_ans.json'
@@ -87,7 +95,6 @@ def userQuery(prompt_list, graph_json):
             else:
                 print("Answer: ", answer)
                 raise SystemExit('Un-support model output format.')
-
             # Format the output to a json object
             json_string = '{' + llm_answer + '}'
             ret = json.loads(json_string)
@@ -145,7 +152,7 @@ def userQuery(prompt_list, graph_json):
                 ret_graph = nx.Graph(ret_graph_copy)
 
                 # Check if two graphs are identical, no weights considered
-                if nx.is_isomorphic(ground_truth_graph, ret_graph):
+                if nx.is_isomorphic(ground_truth_graph, ret_graph, node_match=node_attributes_are_equal):
                     prompt_accu = ground_truth_check_accu(prompt_accu, requestData, ground_truth_ret, ret, llm_output_token_count)
                 else:
                     ground_truth_check_debug(requestData, ground_truth_ret, ret, llm_output_token_count)
