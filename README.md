@@ -51,7 +51,7 @@ pip install -r requirements.txt
 ```
 
 3. Set the secrect key
-In the `app_traffic_analysis/strawman/` and `app_lifecycle_management/strawman/` folder:
+In the `app_traffic_analysis/baseline/` and `app_lifecycle_management/baseline/` folder:
 
 Rename .env.template to .env
 
@@ -60,7 +60,7 @@ Set OPENAI_API_KEY and OPENAI_API_BASE in the .env file.
 
 Note that by default we use [AzureOpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service-b) key, you need to include `OPENAI_API_BASE=https://your-resource-name.openai.azure.com` in your `.env` file.
 
-If you want to use non-Azure key, please select the following in `strawman/ai_model.py`
+If you want to use non-Azure key, please select the following in `baseline/ai_model.py`
 ```
 # Without Azure key
 llm = OpenAI(
@@ -78,7 +78,7 @@ llm = OpenAI(
 
 1. To run with existing query
 ```
-cd app_traffic_analysis/strawman
+cd app_traffic_analysis/baseline
 python test_with_golden.py
 ```
 Results are logged in `baseline/logs/`
@@ -93,12 +93,12 @@ python write_new_pair_to_df.py
 3. Example to generate a new Network graph
 Please check meaning of params in `mock_graph_data.py`.
 ```
-cd app_traffic_analysis/strawman
+cd app_traffic_analysis/baseline
 python mock_graph_data.py --n=5 --v=5 --c=0.05 --o=data/graph_data/node5.json
 ```
 
 
-If you want to load the new graph, change the floowing global variable in `strawman/test_with_golden.py` to the graph path you want.
+If you want to load the new graph, change the floowing global variable in `baseline/test_with_golden.py` to the graph path you want.
 ```
 OUTPUT_JSONL_PATH = 'logs/node10_log.jsonl'
 GRAPH_PATH = "../data/graph_data/node10.json"
@@ -108,10 +108,10 @@ GRAPH_PATH = "../data/graph_data/node10.json"
 ## Lifecycle management
 We use [Google MALT data](https://github.com/google/malt-example-models) as an example of application use. The full data is avaliable in the original git repo.
 
-For strawman showcase, we only extract a small set of original data due to LLMs token limit. The sampled data is stored in `app_lifecycle_management/data/malt-example-sample.txt`.
+For baseline showcase, we only extract a small set of original data due to LLMs token limit. The sampled data is stored in `app_lifecycle_management/data/malt-example-sample.txt`.
 
 To run:
 ```
-cd app_lifecycle_management/strawman
+cd app_lifecycle_management/baseline
 python test_with_golden.py
 ```
