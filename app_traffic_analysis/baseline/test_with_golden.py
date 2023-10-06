@@ -157,7 +157,7 @@ def userQuery(prompt_list, graph_json):
                 else:
                     ground_truth_check_debug(requestData, ground_truth_ret, ret, llm_output_token_count)
 
-            # sleep for 60 seconds, to avoid the API call limit
+            # sleep for some time, to avoid the API call limit
             time.sleep(10)
 
         print("=========Current query process is done!=========")

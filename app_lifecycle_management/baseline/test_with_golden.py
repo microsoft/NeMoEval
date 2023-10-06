@@ -60,12 +60,16 @@ def getGraphData():
     return rawData, G
 
 def node_attributes_are_equal(node1_attrs, node2_attrs):
-    # Check if "size", "color", and "labels" are equal for two nodes
-    return (
-        node1_attrs["size"] == node2_attrs["size"] and
-        node1_attrs["color"] == node2_attrs["color"] and
-        node1_attrs["labels"] == node2_attrs["labels"]
-    )
+    # Check if both nodes have the exact same set of attributes
+    if set(node1_attrs.keys()) != set(node2_attrs.keys()):
+        return False
+
+    # Check if all attribute values are equal
+    for attr_name, attr_value in node1_attrs.items():
+        if attr_value != node2_attrs[attr_name]:
+            return False
+
+    return True
 
 def userQuery(prompt_list, graph_json, G):
     # Load the existing prompt and golden answers from Json
@@ -161,7 +165,7 @@ def userQuery(prompt_list, graph_json, G):
                 else:
                     ground_truth_check_debug(requestData, ground_truth_ret, ret, llm_output_token_count)
 
-            # sleep for 60 seconds, to avoid the API call limit
+            # sleep for some time, to avoid the API call limit
             time.sleep(10)
 
         print("=========Current query process is done!=========")
@@ -220,7 +224,7 @@ def main():
         "Add a new switch 'ju1.a1.m1.s3c9' on jupiter 1, aggregation block 1, domain 1, with 5 ports. You need to add an edge between new switch and existing topology at each layer. Return the new graph.",
         "Update the physical_capacity_bps from 1000 Mbps to 4000 Mbps on ju1.a1.m1.s2c2.p14. Convert Mbps to bps before the update. Return the new graph.",
 
-        # 3 medium one
+        # 3 medium ones
         "What is the bandwidth on ju1.a2.m1.s2c2? Note that first you need to list all port nodes that are contained by packet switch ju1.a2.m1.s2c2. Then sum the attribute physical_capacity_bps on the port nodes together. Output bandwidth unit should be in Mbps. Return only the number.",
         "What is the bandwidth on each AGG_BLOCK? Return a list. Note that AGG_BLOCK contains PACKET_SWITCH, PACKET_SWITCH contains PORT. Then sum the node attribute physical_capacity_bps on the port nodes together. Output bandwidth unit should be in Mbps. Return a table with header 'AGG_BLOCK', 'Bandwidth' on the first row.",
         "Find the first and the second largest Chassis by capacity on 'ju1.a1.m1'. Note that Chassis contains multiple PACKET_SWITCH from different spine block, PACKET_SWITCH contains PORT. Then sum the node attribute physical_capacity_bps on the port nodes together. Output bandwidth unit should be in Mbps. Return a table with header 'Chassis', 'Bandwidth' on the first row.",
