@@ -114,7 +114,7 @@ parso==0.8.3
 parsy==2.1
 pexpect==4.8.0
 pickleshare==0.7.5
-Pillow==9.5.0
+Pillow==10.2.0
 platformdirs==3.6.0
 prometheus-client==0.17.0
 prompt-toolkit==3.0.38
