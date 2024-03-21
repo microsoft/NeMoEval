@@ -79,7 +79,7 @@ jupyterlab-pygments==0.2.2
 jupyterlab-widgets==3.0.7
 jupyterlab_server==2.23.0
 kiwisolver==1.4.4
-langchain==0.0.194
+langchain==0.1.0
 langchainplus-sdk==0.0.6
 langdetect==1.0.9
 llama-cpp-python==0.1.59
