@@ -61,7 +61,7 @@ ipywidgets==8.0.6
 isoduration==20.11.0
 itsdangerous==2.1.2
 jedi==0.18.2
-Jinja2==3.1.2
+Jinja2==3.1.4
 joblib==1.2.0
 json5==0.9.14
 jsonlines==3.1.0
